@@ -1,0 +1,81 @@
+package pila_aleatoria;
+
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author pc
+ */
+public class Pila_aleatoria {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random random = new Random();//variable para el aleatorio
+        int tope = 0, opt = 0,cont=0,tamm=26;
+        char AL;
+        char[] pila = new char[tamm];
+        //vairables
+        do {
+           
+            System.out.println("1 - Llenar\n"
+                    + "2 - Eliminar\n"
+                    + "3 - Mostrar\n"
+                    + "4 - Repetidos\n"
+                    + "5 - Salir\n");
+            //el menu 
+            switch (opt = sc.nextInt()) { //para agregar las opciones de menu
+                case 1:
+                    
+                    for (int i = 0; i < tamm; i++) { //la condicion para llenarla
+                        AL=(char)(random.nextInt(26)+'A');
+                        if (tope < tamm) {
+                            pila[tope] = AL;
+                            AL++;
+                            tope++;
+                            
+                        } else {
+                            System.out.println("Pila llena....");
+                         
+                            break;
+                        }
+                    }break;//termina la condion de llenar
+                    
+                case 2:
+                    if (tope > 0) {//condicion poara eliminar 
+                        System.out.println("Dato eliminado..." + tope);
+                        tope--;
+                    } else {
+                        System.out.println("No hay elementos para eliminar....");
+                    }break;
+                    // termina el caso de eliminar
+                case 3:
+                    if (tope > 0) { 
+                         for(int i=tope-1;i>=0;i--){
+                             char aleat=(char)(Math.random()*26+'A');//para mostrar el abecedario aleatoriamente
+                             System.out.println(aleat);//para imprimirlo 
+                         }
+                    } else {
+                        System.out.println("Pila vacia....");
+                       //se mostrata el mensaje cuando no se llene antes la pila
+                    }break;//termina el caso de mostrar
+                    
+                case 4:
+                    for(int a=0;a<26;a++){//condicion para mostrar las letras que se repiten
+                        char aleat=(char)(Math.random()*26+'A');
+                        if(a>0){
+                            System.out.println("La letra "+aleat+" tiene "+cont+" letas repetidas");
+                            //imprimir los datos repetidos
+                            cont++;
+                        } 
+              }  
+
+            }
+        } while (opt != 5);//para finalizar si ya no se quiere hacer alguna otra operaicon 
+    }
+    
+}
